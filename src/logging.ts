@@ -44,7 +44,7 @@ container.registerInstance('Logger', log);
 export const errorHandler: ErrorRequestHandler = (err: any, req: Request, res: Response, next: NextFunction) => {
     log.error('Unknown error', err);
     const status = err.status || 500;
-    const errorPageFormatHint = req.header('accept');
+    const errorPageFormatHint = req.header('accept') || '';
 
     if (res.headersSent) {
         return;
